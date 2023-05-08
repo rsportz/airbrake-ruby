@@ -117,10 +117,6 @@ module Airbrake
         total.increment_ms(resource.timing)
       else
         loc = caller_locations(6..6).first
-        Kernel.warn(
-          "#{loc.path}:#{loc.lineno}: warning: :start_time and :end_time are " \
-          "deprecated. Use :timing & :time instead",
-        )
         total.increment(resource.start_time, resource.end_time)
       end
     end
